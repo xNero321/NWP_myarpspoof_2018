@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: gcc
+
+    steps:
+      - checkout
+
+      - run:
+          name: Build
+          command: make re
+      - run:
+          name: Checking artifact
+          command: ls myARPspoof
+      - run:
+          name: Executing artifact
+          command: ./myARPspoof
