@@ -10,10 +10,10 @@
 
 int main(int ac, char **av)
 {
-	core_t *core = malloc(sizeof(core_t));
+    core_t *core = malloc(sizeof(core_t));
 
-	check_args(ac, av);
-	init_core(core, av);
-	init_socket_and_get_my_mac_addr(core);
-	return (EXIT_SUCCESS);
+    check_args(ac, av);
+    init_core(core, av);
+    init_socket_and_get_my_mac_addr(core);
+    return (EXIT_SUCCESS);
 }

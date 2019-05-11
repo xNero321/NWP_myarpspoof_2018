@@ -10,6 +10,6 @@
 
 void error(char const *error)
 {
-	fprintf(stderr, "%s", error);
-	exit(ERROR_EXIT);
+    fprintf(stderr, "%s", error);
+    exit(ERROR_EXIT);
 }
