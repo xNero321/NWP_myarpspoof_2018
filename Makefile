@@ -11,7 +11,9 @@ NAME	=	myARPspoof
 
 CFLAGS	+= -I ./includes/
 
-SRCS	=	./src/main.c
+SRCS	=	./src/main.c	\
+			./src/error.c	\
+			./src/check_args.c
 
 OBJS	= $(SRCS:.c=.o)
 
