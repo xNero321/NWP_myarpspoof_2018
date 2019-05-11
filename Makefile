@@ -13,7 +13,8 @@ CFLAGS	+= -I ./includes/
 
 SRCS	=	./src/main.c	\
 			./src/error.c	\
-			./src/check_args.c
+			./src/check_args.c	\
+			./src/socket.c
 
 OBJS	= $(SRCS:.c=.o)
 

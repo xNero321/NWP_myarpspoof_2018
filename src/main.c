@@ -14,7 +14,6 @@ int main(int ac, char **av)
 
 	check_args(ac, av);
 	init_core(core, av);
-	
-	printf("%s, %s, %s\n", core->new_sender_ip, core->target_ip, core->interface);
+	init_socket_and_get_my_mac_addr(core);
 	return (EXIT_SUCCESS);
 }

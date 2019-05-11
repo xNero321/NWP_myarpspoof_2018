@@ -17,6 +17,7 @@
 // ******************** ERROR MESSAGES ******************
 	#define ERROR_ARGS "Error: There must be at least 4 arguments.\n"
 	#define ERROR_SOCKET "Error: Socket canno't be created.\n"
+	#define ERROR_IOCTLT "Error: IOCTL couldn't resolve the mac address.\n"
 	
 // ********************* STRUCTURES ***********************
 	typedef struct ethernet_header_s
@@ -55,4 +56,7 @@
 // ********************** check_args.c *************************
 	void check_args(int ac, char **av);
 	void init_core(core_t *core, char **av);
+// ********************** socket.c *************************
+	void init_socket_and_get_my_mac_addr(core_t *core);
+	void get_my_mac_addr(core_t *core);
 #endif /* !PACKET_H_ */
