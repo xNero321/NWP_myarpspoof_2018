@@ -4,13 +4,22 @@
 ** File description:
 ** NWP_myarpspoof_2018 headers.c
 */
+#include <stdlib.h>
+#include <stdio.h>
+#include <linux/if_ether.h>
+#include <netinet/in.h>
+#include <sys/ioctl.h>
+#include <net/if.h>
+#include <arpa/inet.h>
+#include <string.h>
+#include "packet.h"
 
-arp_packet_t *create_arp_header(core_t *core, const uint8_t *dest_mac_addr)
+arp_header_t *create_arp_header(core_t *core, const uint8_t *dest_mac_addr)
 {
-    arp_packet_t *arp = malloc(sizeof(arp_packet_t));
+    arp_header_t *arp = malloc(sizeof(arp_header_t));
 
     arp->hardware_type = htons(1);
-    arp->protocol_type = htons(0x0800);
+    arp->protocol_type = htons(ETH_P_IP);
     arp->hardware_len = 6;
     arp->protocol_len = 4;
     arp->opcode = htons(1);
@@ -21,10 +30,10 @@ arp_packet_t *create_arp_header(core_t *core, const uint8_t *dest_mac_addr)
     return (arp);
 }
 
-ethernet_header_t create_ethernet_header(core_t *core,
-    const uint8_t *dest_mac_addr)
+ethernet_header_t *create_ethernet_header(core_t *core,
+    const uint8_t *dest_mac_addr, arp_header_t *arp)
 {
-    ethernet_header_t *eth = malloc(sizeof(arp_packet_t) * 65535);
+    ethernet_header_t *eth = malloc(sizeof(uint8_t) * 65535);
     memcpy(&eth->dest_mac_addr, dest_mac_addr, sizeof(uint8_t) * 6);
     memcpy(&eth->src_mac_addr, core->my_mac_addr, sizeof(uint8_t) * 6);
     memcpy(&eth->type, (uint8_t[2]){ETH_P_ARP / 256, ETH_P_ARP % 256},
